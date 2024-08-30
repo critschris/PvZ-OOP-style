@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ef1f6450537c34bb858109042d9468, type: 3}
+  m_Name: Day Map Data
+  m_EditorClassIdentifier: 
+  map: 0
+  zombieAmount: 02000000040000000f00000014000000
+  MinWaittime:
+  - 20
+  - 100
+  - 75
+  - 20
+  MaxWaittime:
+  - 40
+  - 120
+  - 100
+  - 0
+  delay_Between_Spawns:
+  - 17
+  - 14
+  - 5
+  - 1
