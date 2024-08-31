@@ -13,19 +13,16 @@ MonoBehaviour:
   m_Name: Day Map Data
   m_EditorClassIdentifier: 
   map: 0
-  zombieAmount: 02000000040000000f00000014000000
+  zombieAmount: 02000000040000000f0000001400000019000000
   MinWaittime:
-  - 20
-  - 100
-  - 75
-  - 20
-  MaxWaittime:
-  - 40
-  - 120
-  - 100
-  - 0
+  - 60
+  - 60
+  - 80
+  - 25
+  - 10
   delay_Between_Spawns:
   - 17
   - 14
   - 5
   - 1
+  - 0.25

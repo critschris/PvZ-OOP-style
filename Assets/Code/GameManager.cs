@@ -14,20 +14,24 @@ public class GameManager
 
     InputManager inputManager;
 
-    public GameManager(MapData[] list_of_MapDatas, RowAndColumnCoordinates[] rowAndColumnCoordinates, PlantUnit[] plantUnit_Data_List, ZombieUnit[] zombieUnit_Data_List)
+    public GameManager(GameData gameData, GameObject []HoriAndVertiInput, Camera camera)
     {
         //Data Transfer
-        List_of_MapDatas = list_of_MapDatas;
-        List_of_rowandcolumns = rowAndColumnCoordinates;
-        PlantUnit_Data_List = plantUnit_Data_List;
-        ZombieUnit_Data_List = zombieUnit_Data_List;
+        List_of_MapDatas = gameData.List_of_MapDatas;
+        List_of_rowandcolumns = gameData.List_of_rowandcolumns;
+        PlantUnit_Data_List = gameData.PlantUnit_Data_List;
+        ZombieUnit_Data_List = gameData.ZombieUnit_Data_List;
 
         //Create Other managers
-        if (GameManager.map=="Day")
-        {
 
-        }
-        inputManager = new InputManager(List_of_rowandcolumns);
+        //Map manager
+        //int MapInfoIndex = MapToIntConverter(map);
+
+        
+        //Input manager
+        int CoordianteInfoIndex = RowAndCollumnToIntConverter(map);
+        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],HoriAndVertiInput[0] , HoriAndVertiInput[1],camera);
+
     }
 
     public void FakeUpdate()
@@ -37,11 +41,65 @@ public class GameManager
 
     public static void ChangeMap(string map)
     {
-        if (map!="Day"&&map!="Night"&&map!="Pool")
+        if (MapToIntConverter(map)==-1)
         {
+            Debug.Log("Map does not exist");
             return;
         }
         GameManager.map = map;
     }
 
+    private static int MapToIntConverter(string Map)
+    {
+
+        switch(Map.ToLower())
+        {
+            case "day":
+                return 0;
+
+            case "night":
+                return 1;
+
+            case "pool":
+                return 2;
+
+            case "nightPool":
+                return 3;
+
+            case "roof":
+                return 4;
+        }
+
+
+        return -1;
+    }
+
+    private int RowAndCollumnToIntConverter(string Map)
+    {
+        switch (Map.ToLower())
+        {
+            case "day":
+                return 0;
+
+            case "night":
+                return 0;
+
+            case "pool":
+                return 1;
+
+            case "nightPool":
+                return 1;
+
+            case "roof":
+                return 2;
+        }
+
+
+        return -1;
+    }
+
+    public static void InputStateChangeToPlantPlacement()
+    {
+        InputManager.ChangeToPlantPlacementState();
+    }
 }

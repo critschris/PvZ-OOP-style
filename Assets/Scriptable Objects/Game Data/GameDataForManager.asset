@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121d260dcc247e34ebbb958250ec699c, type: 3}
+  m_Name: GameDataForManager
+  m_EditorClassIdentifier: 
+  List_of_MapDatas:
+  - {fileID: 11400000, guid: 87751d0d33e2d03479b156f319501e1e, type: 2}
+  List_of_rowandcolumns:
+  - {fileID: 11400000, guid: 24b7db23685622245adbac5674b07739, type: 2}
+  PlantUnit_Data_List:
+  - {fileID: 11400000, guid: cf04ce4be26c64e4183fef2ee135b8fe, type: 2}
+  - {fileID: 11400000, guid: 77736dedd7b1829408faf743b0f0c7ab, type: 2}
+  ZombieUnit_Data_List:
+  - {fileID: 11400000, guid: 4c5729fff51ca8649a215b17084a679b, type: 2}
+  HoriInputOutLine: {fileID: 3109040628906040838, guid: 67b999219c797cc4d89fb45aba028b11, type: 3}
+  VertiInputOutLine: {fileID: 898432200489050989, guid: ef476fa0122343c4faa639bac2b6d0ff, type: 3}

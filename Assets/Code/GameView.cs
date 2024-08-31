@@ -4,22 +4,32 @@ using UnityEngine;
 
 public class GameView : MonoBehaviour
 {
-    public MapData[] List_of_MapDatas;
-    public RowAndColumnCoordinates[] List_of_rowandcolumns;
-    public PlantUnit[] PlantUnit_Data_List;
-    public ZombieUnit[] ZombieUnit_Data_List;
+
+    [SerializeReference]
+    GameData GameDataCollection;
+
+    [SerializeField]
+    Camera Onlycamera;
 
     public GameManager GameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameManager = new GameManager(List_of_MapDatas,List_of_rowandcolumns,PlantUnit_Data_List,ZombieUnit_Data_List);
+        GameObject HoriInput = Instantiate(GameDataCollection.HoriInputOutLine);
+        GameObject VertiInput = Instantiate(GameDataCollection.VertiInputOutLine);
+        
+        GameManager = new GameManager(GameDataCollection,new GameObject[] { HoriInput,VertiInput}, Onlycamera);
     }
 
     // Update is called once per frame
     void Update()
     {
-       // GameManager.FakeUpdate();
+       GameManager.FakeUpdate();
+    }
+
+    public static void InputStateChangeToPlantPlacement()
+    {
+        GameManager.InputStateChangeToPlantPlacement();
     }
 }

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Sun Flower
   HP: 6
-  Action_delay: 19.5
+  Action_delay: 7.5
   animation_time: 0.25
+  type: 0
   IdleAnimation:
   - {fileID: 632163974, guid: 0609d677703d0d541aa866aecaaae760, type: 3}
   - {fileID: 1435851902, guid: 0609d677703d0d541aa866aecaaae760, type: 3}

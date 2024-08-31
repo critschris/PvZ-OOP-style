@@ -10,8 +10,10 @@ public class MapData : ScriptableObject
     public Map map;
 
     public int [] zombieAmount;
+
+    //Minimum time before checking dead
     public float [] MinWaittime;
-    public float [] MaxWaittime;
+
     public float [] delay_Between_Spawns;
     
 }

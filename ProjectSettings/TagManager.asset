@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Plant
+  - Zombie
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Drops
     uniqueID: 3438783891
+    locked: 0
+  - name: UI
+    uniqueID: 98427143
     locked: 0
