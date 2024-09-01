@@ -29,7 +29,7 @@ public class InputManager
     public InputManager(RowAndColumnCoordinates rowandcolumns, GameObject HoriInput,GameObject VertiInput, Camera camera)
     {
         this.rowandcolumns = rowandcolumns;
-        camera = Onlycamera;
+        Onlycamera = camera;
         HoriInputTransform = HoriInput.transform;
         VertiInputTransform = VertiInput.transform;
         HoriInputRenderer = HoriInput.GetComponentInChildren<SpriteRenderer>();
@@ -62,7 +62,7 @@ public class InputManager
 
     private Vector3 MouseLocationToWorld()
     {
-        
+
         Vector3 mousePOS = Onlycamera.ScreenToWorldPoint(Input.mousePosition);
         mousePOS.z = 0;
         return mousePOS;
@@ -96,14 +96,16 @@ public class InputManager
 
     private void OutLineCoordinateToTransform_xy_Setter()
     {
+
         HoriInputTransform.position = new Vector3(HoriInputTransform.position.x, RowInputOutLinePOS[(int)InputOutlinePOS.y],0F);
+
         VertiInputTransform.position = new Vector3(CollumnInputOutLinePOS[(int)InputOutlinePOS.x], VertiInputTransform.position.y, 0F);
     }
 
     private void PlantInput()
     {
         Vector3 MousePOS = MouseLocationToWorld();
-        
+
         for (int i =0;i<rowLimits.Length ;i++)
         {
             if (i==0&& (MousePOS.y > rowLimits[i]))
@@ -114,37 +116,40 @@ public class InputManager
 
             if (i == rowLimits.Length - 1 &&(MousePOS.y<rowLimits[i]))
             {
-                InputOutlinePOS.y = rowLimits.Length+1;
+                InputOutlinePOS.y = rowLimits.Length;
                 break;
             }
 
-            if (MousePOS.y < rowLimits[i]&& MousePOS.y > rowLimits[i+1])
+            if ((i< rowLimits.Length) &&MousePOS.y < rowLimits[i]&& MousePOS.y > rowLimits[i+1])
             {
-                InputOutlinePOS.y = i;
+                InputOutlinePOS.y = i+1;
                 break;
             }
         }
 
         for (int i =0;i<collumnLimits.Length ;i++)
         {
+            
             if (i == 0 && (MousePOS.x < collumnLimits[i]))
             {
                 InputOutlinePOS.x = 0;
                 break;
             }
 
-            if (i == rowLimits.Length - 1 && (MousePOS.x > collumnLimits[i]))
+            if (i == collumnLimits.Length - 1 && (MousePOS.x > collumnLimits[i]))
             {
-                InputOutlinePOS.x = rowLimits.Length + 1;
+                InputOutlinePOS.x = collumnLimits.Length;
                 break;
             }
 
-            if (MousePOS.x > rowLimits[i] && MousePOS.x < collumnLimits[i + 1])
+            if ((i< collumnLimits.Length - 1) &&MousePOS.x > collumnLimits[i] && MousePOS.x < collumnLimits[i + 1])
             {
-                InputOutlinePOS.x = i;
+                InputOutlinePOS.x = i+1;
                 break;
             }
         }
+
+
 
         OutLineCoordinateToTransform_xy_Setter();
     }

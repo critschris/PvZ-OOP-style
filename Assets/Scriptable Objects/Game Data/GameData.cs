@@ -12,4 +12,6 @@ public class GameData : ScriptableObject
 
     public GameObject HoriInputOutLine;
     public GameObject VertiInputOutLine;
+
+    public GameObject BackGround;
 }

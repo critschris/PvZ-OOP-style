@@ -14,7 +14,9 @@ public class GameManager
 
     InputManager inputManager;
 
-    public GameManager(GameData gameData, GameObject []HoriAndVertiInput, Camera camera)
+    MapManager mapManager;
+
+    public GameManager(GameData gameData, GameObject []ObjectList, Camera camera)
     {
         //Data Transfer
         List_of_MapDatas = gameData.List_of_MapDatas;
@@ -25,17 +27,19 @@ public class GameManager
         //Create Other managers
 
         //Map manager
-        //int MapInfoIndex = MapToIntConverter(map);
+        int MapInfoIndex = MapToIntConverter(map);
+        mapManager = new MapManager(List_of_MapDatas[MapInfoIndex], ObjectList[2]);
 
         
         //Input manager
         int CoordianteInfoIndex = RowAndCollumnToIntConverter(map);
-        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],HoriAndVertiInput[0] , HoriAndVertiInput[1],camera);
+        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],ObjectList[0] , ObjectList[1],camera);
 
     }
 
     public void FakeUpdate()
     {
+        mapManager.FakeUpdate();
         inputManager.FakeUpdate();
     }
 
@@ -51,7 +55,7 @@ public class GameManager
 
     private static int MapToIntConverter(string Map)
     {
-
+        
         switch(Map.ToLower())
         {
             case "day":

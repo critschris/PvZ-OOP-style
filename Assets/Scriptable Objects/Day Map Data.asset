@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Day Map Data
   m_EditorClassIdentifier: 
   map: 0
+  BackGroundMap: {fileID: 21300000, guid: 560da4ce59ea1a64ba813f2064876a86, type: 3}
   zombieAmount: 02000000040000000f0000001400000019000000
   MinWaittime:
   - 60

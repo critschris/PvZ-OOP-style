@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c5729fff51ca8649a215b17084a679b, type: 2}
   HoriInputOutLine: {fileID: 3109040628906040838, guid: 67b999219c797cc4d89fb45aba028b11, type: 3}
   VertiInputOutLine: {fileID: 898432200489050989, guid: ef476fa0122343c4faa639bac2b6d0ff, type: 3}
+  BackGround: {fileID: 219302735350338230, guid: 3930aa1edbfd61e429e345ac1d2c25b2, type: 3}

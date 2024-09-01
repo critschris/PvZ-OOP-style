@@ -9,6 +9,8 @@ public class MapData : ScriptableObject
     public enum Map{Day,Night, Pool, NightPool, Roof};
     public Map map;
 
+    public Sprite BackGroundMap;
+
     public int [] zombieAmount;
 
     //Minimum time before checking dead
