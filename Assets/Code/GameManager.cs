@@ -16,7 +16,7 @@ public class GameManager
 
     MapManager mapManager;
 
-    public GameManager(GameData gameData, GameObject []ObjectList, Camera camera)
+    public GameManager(GameData gameData, Camera camera)
     {
         //Data Transfer
         List_of_MapDatas = gameData.List_of_MapDatas;
@@ -28,12 +28,12 @@ public class GameManager
 
         //Map manager
         int MapInfoIndex = MapToIntConverter(map);
-        mapManager = new MapManager(List_of_MapDatas[MapInfoIndex], ObjectList[2]);
+        mapManager = new MapManager(List_of_MapDatas[MapInfoIndex], gameData.BackGround);
 
         
         //Input manager
         int CoordianteInfoIndex = RowAndCollumnToIntConverter(map);
-        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],ObjectList[0] , ObjectList[1],camera);
+        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],gameData.HoriInputOutLine , gameData.VertiInputOutLine,camera);
 
     }
 

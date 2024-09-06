@@ -6,6 +6,9 @@ public class InputManager
 {
 
     RowAndColumnCoordinates rowandcolumns;
+    GameObject HoriInput;
+    GameObject VertiInput;
+
     Transform HoriInputTransform;
     Transform VertiInputTransform;
     SpriteRenderer HoriInputRenderer;
@@ -30,10 +33,12 @@ public class InputManager
     {
         this.rowandcolumns = rowandcolumns;
         Onlycamera = camera;
-        HoriInputTransform = HoriInput.transform;
-        VertiInputTransform = VertiInput.transform;
-        HoriInputRenderer = HoriInput.GetComponentInChildren<SpriteRenderer>();
-        VertiInputRenderer = VertiInput.GetComponentInChildren<SpriteRenderer>();
+        this.HoriInput = Object.Instantiate(HoriInput);
+        this.VertiInput = Object.Instantiate(VertiInput);
+        HoriInputTransform = this.HoriInput.transform;
+        VertiInputTransform = this.VertiInput.transform;
+        HoriInputRenderer = this.HoriInput.GetComponentInChildren<SpriteRenderer>();
+        VertiInputRenderer = this.VertiInput.GetComponentInChildren<SpriteRenderer>();
 
         rowLimits = rowandcolumns.PlantingInputRowLines;
         collumnLimits = rowandcolumns.PlantingInputCollumnLines;

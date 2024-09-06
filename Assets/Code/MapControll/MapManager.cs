@@ -19,7 +19,7 @@ public class MapManager
         
         this.mapData = mapData;
 
-        this.BackGround = BackGround;
+        this.BackGround = Object.Instantiate(BackGround);
         BGSprite = BackGround.GetComponentInChildren<SpriteRenderer>();
 
         BackGroundSetUp();
