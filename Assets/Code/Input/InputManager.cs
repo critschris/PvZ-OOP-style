@@ -14,6 +14,8 @@ public class InputManager
     SpriteRenderer HoriInputRenderer;
     SpriteRenderer VertiInputRenderer;
 
+    bool InputOutLineIsEnabled;
+
     float[] rowLimits;
     float[] collumnLimits;
 
@@ -45,23 +47,26 @@ public class InputManager
 
         RowInputOutLinePOS = rowandcolumns.RowInputOutLinePOS;
         CollumnInputOutLinePOS = rowandcolumns.CollumnInputOutLinePOS;
+        InputOutLineIsEnabled = false;
+    }
 
+    public void FakeFixedUpdate()
+    {
+        if (inputState == InputState.PlantPlacement)
+        {
+            if (!InputOutLineIsEnabled) { 
+                EnableInputOutLine();
+            }
+            PlantInput();
+        }
     }
 
     public void FakeUpdate()
     {
-        if (inputState==InputState.PlantPlacement)
+        if (Input.GetMouseButtonDown(0)&& InputOutLineIsEnabled)
         {
-            EnableInputOutLine();
-            PlantInput();
-
-
-            if (Input.GetMouseButtonDown(0))
-            {
-
-                DisableInputOutLine();
-                ChangeToFreeMovementState();
-            }
+            DisableInputOutLine();
+            ChangeToFreeMovementState();
         }
     }
 
@@ -90,6 +95,7 @@ public class InputManager
         Color tempcolor = new Color(HoriInputRenderer.color.r, HoriInputRenderer.color.g, HoriInputRenderer.color.b,aAmount);
         HoriInputRenderer.color = tempcolor;
         VertiInputRenderer.color = tempcolor;
+        InputOutLineIsEnabled = true;
     }
 
     private void DisableInputOutLine()
@@ -97,6 +103,7 @@ public class InputManager
         Color tempcolor = new Color(HoriInputRenderer.color.r, HoriInputRenderer.color.g, HoriInputRenderer.color.b, 0);
         HoriInputRenderer.color = tempcolor;
         VertiInputRenderer.color = tempcolor;
+        InputOutLineIsEnabled = false;
     }
 
     private void OutLineCoordinateToTransform_xy_Setter()

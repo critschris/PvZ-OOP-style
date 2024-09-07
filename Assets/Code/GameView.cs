@@ -20,9 +20,14 @@ public class GameView : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
        GameManager.FakeUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        GameManager.FakeFixedUpdate();
     }
 
     public static void InputStateChangeToPlantPlacement()

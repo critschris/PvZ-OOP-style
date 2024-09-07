@@ -20,7 +20,7 @@ public class MapManager
         this.mapData = mapData;
 
         this.BackGround = Object.Instantiate(BackGround);
-        BGSprite = BackGround.GetComponentInChildren<SpriteRenderer>();
+        BGSprite = this.BackGround.GetComponentInChildren<SpriteRenderer>();
 
         BackGroundSetUp();
 
@@ -31,6 +31,7 @@ public class MapManager
         if (SpawnEnemies)
         {
             //Spawn enemies
+
         }
         else
         {

@@ -39,8 +39,13 @@ public class GameManager
 
     public void FakeUpdate()
     {
-        mapManager.FakeUpdate();
+        //mapManager.FakeUpdate();
         inputManager.FakeUpdate();
+    }
+
+    public void FakeFixedUpdate()
+    {
+        inputManager.FakeFixedUpdate();
     }
 
     public static void ChangeMap(string map)
