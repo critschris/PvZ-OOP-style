@@ -235,6 +235,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SunFlower_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 72
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd7f4964750a174aa9df45c2413ceee
+      internalID: 1922812037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -252,6 +273,7 @@ TextureImporter:
       SunFlower_3: 636800875
       SunFlower_4: -1531754126
       SunFlower_5: -1188388899
+      SunFlower_6: 1922812037
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

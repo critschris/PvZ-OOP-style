@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager 
 {
@@ -14,6 +15,13 @@ public class InputManager
     SpriteRenderer HoriInputRenderer;
     SpriteRenderer VertiInputRenderer;
 
+    PlantSelectionMenuData plantSelectionMenuData;
+    PlantSelectionMenuComponent plantSelectionMenu;
+    GameObject[] List_Of_Chosen_Plants;
+    GameObject[] List_Of_Plant_Selection;
+
+    UnitManager unitManager;
+
     bool InputOutLineIsEnabled;
 
     float[] rowLimits;
@@ -26,12 +34,12 @@ public class InputManager
 
     Camera Onlycamera;
 
-    static float aAmount= 0.227F;
+    Color Transparent_Color;
 
     enum InputState {FreeMovement, PlantPlacement}
     static InputState inputState = InputState.FreeMovement;
 
-    public InputManager(RowAndColumnCoordinates rowandcolumns, GameObject HoriInput,GameObject VertiInput, Camera camera)
+    public InputManager(RowAndColumnCoordinates rowandcolumns, GameObject HoriInput,GameObject VertiInput, Camera camera, Color Tcolor, PlantSelectionMenuData plantSelectionMenuData,UnitManager unitManager)
     {
         this.rowandcolumns = rowandcolumns;
         Onlycamera = camera;
@@ -42,12 +50,22 @@ public class InputManager
         HoriInputRenderer = this.HoriInput.GetComponentInChildren<SpriteRenderer>();
         VertiInputRenderer = this.VertiInput.GetComponentInChildren<SpriteRenderer>();
 
+        Transparent_Color = Tcolor;
+
         rowLimits = rowandcolumns.PlantingInputRowLines;
         collumnLimits = rowandcolumns.PlantingInputCollumnLines;
 
         RowInputOutLinePOS = rowandcolumns.RowInputOutLinePOS;
         CollumnInputOutLinePOS = rowandcolumns.CollumnInputOutLinePOS;
         InputOutLineIsEnabled = false;
+
+        GameObject tempGO = Object.FindObjectOfType<Canvas>().gameObject;
+        plantSelectionMenu = tempGO.GetComponentInChildren<PlantSelectionMenuComponent>();
+        List_Of_Plant_Selection = plantSelectionMenu.ListOfPlantButtons;
+        this.plantSelectionMenuData = plantSelectionMenuData;
+
+        this.unitManager = unitManager;
+        SetupPlantSlectionButtons();
     }
 
     public void FakeFixedUpdate()
@@ -67,6 +85,28 @@ public class InputManager
         {
             DisableInputOutLine();
             ChangeToFreeMovementState();
+        }
+    }
+
+    private void SetupPlantSlectionButtons()
+    {
+
+        bool EndOfList = false;
+        for (int i=0; i<List_Of_Plant_Selection.Length;i++)
+        {
+            if (!EndOfList)
+            {
+                Sprite tempSprite = unitManager.GetPlantUnitPic(i);
+                if (tempSprite==null)
+                {
+                    List_Of_Plant_Selection[i].GetComponent<Image>().sprite = plantSelectionMenuData.EmptyImage;
+                    EndOfList = true;
+                    continue;
+                }
+                List_Of_Plant_Selection[i].GetComponent<Image>().sprite = tempSprite;
+                continue;
+            }
+            List_Of_Plant_Selection[i].GetComponent<Image>().sprite = plantSelectionMenuData.EmptyImage;
         }
     }
 
@@ -92,9 +132,8 @@ public class InputManager
 
     private void EnableInputOutLine()
     {
-        Color tempcolor = new Color(HoriInputRenderer.color.r, HoriInputRenderer.color.g, HoriInputRenderer.color.b,aAmount);
-        HoriInputRenderer.color = tempcolor;
-        VertiInputRenderer.color = tempcolor;
+        HoriInputRenderer.color = Transparent_Color;
+        VertiInputRenderer.color = Transparent_Color;
         InputOutLineIsEnabled = true;
     }
 
@@ -104,14 +143,6 @@ public class InputManager
         HoriInputRenderer.color = tempcolor;
         VertiInputRenderer.color = tempcolor;
         InputOutLineIsEnabled = false;
-    }
-
-    private void OutLineCoordinateToTransform_xy_Setter()
-    {
-
-        HoriInputTransform.position = new Vector3(HoriInputTransform.position.x, RowInputOutLinePOS[(int)InputOutlinePOS.y],0F);
-
-        VertiInputTransform.position = new Vector3(CollumnInputOutLinePOS[(int)InputOutlinePOS.x], VertiInputTransform.position.y, 0F);
     }
 
     private void PlantInput()
@@ -161,9 +192,10 @@ public class InputManager
             }
         }
 
+        HoriInputTransform.position = new Vector3(HoriInputTransform.position.x, RowInputOutLinePOS[(int)InputOutlinePOS.y], 0F);
 
+        VertiInputTransform.position = new Vector3(CollumnInputOutLinePOS[(int)InputOutlinePOS.x], VertiInputTransform.position.y, 0F);
 
-        OutLineCoordinateToTransform_xy_Setter();
     }
     
 }

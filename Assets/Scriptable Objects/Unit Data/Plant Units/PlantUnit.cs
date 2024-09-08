@@ -14,6 +14,7 @@ public class PlantUnit : ScriptableObject
 
     public Type type;
 
+    public Sprite UnitPic;
     public Sprite[] IdleAnimation;
     public Sprite[] ActionAnimation;
 

@@ -17,6 +17,7 @@ MonoBehaviour:
   Action_delay: 1.5
   animation_time: 0.25
   type: 1
+  UnitPic: {fileID: 666677926, guid: abf8d34536862f84b8a6cc2194d22410, type: 3}
   IdleAnimation:
   - {fileID: 2077966813, guid: abf8d34536862f84b8a6cc2194d22410, type: 3}
   - {fileID: 1048280186, guid: abf8d34536862f84b8a6cc2194d22410, type: 3}

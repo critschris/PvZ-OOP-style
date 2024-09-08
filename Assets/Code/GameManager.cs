@@ -16,6 +16,8 @@ public class GameManager
 
     MapManager mapManager;
 
+    UnitManager unitManager;
+
     public GameManager(GameData gameData, Camera camera)
     {
         //Data Transfer
@@ -25,6 +27,10 @@ public class GameManager
         ZombieUnit_Data_List = gameData.ZombieUnit_Data_List;
 
         //Create Other managers
+        int CoordianteInfoIndex = RowAndCollumnToIntConverter(map);
+
+        //Unit Manager
+        unitManager = new UnitManager(PlantUnit_Data_List,ZombieUnit_Data_List, List_of_rowandcolumns[CoordianteInfoIndex]);
 
         //Map manager
         int MapInfoIndex = MapToIntConverter(map);
@@ -32,8 +38,8 @@ public class GameManager
 
         
         //Input manager
-        int CoordianteInfoIndex = RowAndCollumnToIntConverter(map);
-        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],gameData.HoriInputOutLine , gameData.VertiInputOutLine,camera);
+        
+        inputManager = new InputManager(List_of_rowandcolumns[CoordianteInfoIndex],gameData.HoriInputOutLine , gameData.VertiInputOutLine,camera,gameData.ColorForOutLine,gameData.plantSelectionMenuData, unitManager);
 
     }
 

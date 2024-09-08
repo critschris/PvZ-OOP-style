@@ -10,6 +10,8 @@ public class GameData : ScriptableObject
     public PlantUnit[] PlantUnit_Data_List;
     public ZombieUnit[] ZombieUnit_Data_List;
 
+    public PlantSelectionMenuData plantSelectionMenuData;
+    public Color ColorForOutLine;
     public GameObject HoriInputOutLine;
     public GameObject VertiInputOutLine;
 
